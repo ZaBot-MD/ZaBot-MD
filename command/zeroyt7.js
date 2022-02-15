@@ -51,7 +51,7 @@ const https = require('https');
 const agent = new https.Agent({  
   rejectUnauthorized: false
 });
-const { ytmp3 } = require('../message/ytdl.js')
+const { y2mateA, y2mateV } = require('../message/ytdl.js')
 lol = 'rey2k21'
 xteam = 'benniismaelapikey'
 //━━━━━━━━━━━━━━━[ MODULE EXPORTS ]━━━━━━━━━━━━━━━━━//
@@ -213,22 +213,14 @@ await zeroyt7.sendMessage(m.chat, { caption: `⭓Download Menu
 _${res.uploadedAt}_`,location: {jpegThumbnail: hh},templateButtons: menuBut,footer: pushname},)
 break
 case 'ytmp3': case 'mp3': case 'yta': {
-if (!q) throw 'mana linknya?'
+  if (!q) throw 'mana linknya?'
   m.reply('wait')
-    .then(res => {
-      zeroyt7.sendMessage(m.chat, { delete: res.key })
-    })
-  api = await ytmp3(q)
-  if (api.error) throw 'server error' 
-  for (i of api.vidInfo) {
-    if (i.bitrate == 128) {
-      m.reply(`downloading 
-*size:* ${i.mp3size}
-*bitrate:* ${i.bitrate}`)
-      buf = await getBuffer(i.dloadUrl)
-      zeroyt7.sendMessage(m.chat, { document: buf, mimetype: 'audio/mpeg', fileName: `${api.vidTitle}.mp3`}, {quoted:m})
-    }
-  }
+  api = await y2mateA(q)[0]
+  m.reply(`downloading 
+*size:* ${api.size}
+*quality:* ${api.quality}`)
+  buf = await getBuffer(api.link)
+  zeroyt7.sendMessage(m.chat, { document: buf, mimetype: 'audio/mpeg', fileName: api.output}, {quoted:m})
 }
 break
 case 'mp4': case 'ytmp4': {
