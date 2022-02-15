@@ -215,7 +215,8 @@ break
 case 'ytmp3': case 'mp3': case 'yta': {
   if (!q) throw 'mana linknya?'
   m.reply('wait')
-  api = await y2mateA(q)[0]
+  apis = await y2mateA(q)
+  api = apis[0]
   m.reply(`downloading 
 *size:* ${api.size}
 *quality:* ${api.quality}`)
@@ -226,7 +227,8 @@ break
 case 'ytmp4': case 'mp4': case 'ytv': {
   if (!q) throw 'mana linknya?'
   m.reply('wait')
-  api = await y2mateV(q)[0]
+  apis = await y2mateV(q)
+  api = apis[0]
   m.reply(`downloading 
 *size:* ${api.size}
 *quality:* ${api.quality}`)
