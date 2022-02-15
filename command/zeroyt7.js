@@ -223,15 +223,17 @@ case 'ytmp3': case 'mp3': case 'yta': {
   zeroyt7.sendMessage(m.chat, { document: buf, mimetype: 'audio/mpeg', fileName: api.output}, {quoted:m})
 }
 break
-case 'mp4': case 'ytmp4': {
-if (!q) throw 'mana linknya?'
-api = await ytv(q)
-m.reply(`downloading ${api[0].size}`)
-buf = await getBuffer(api[0].link)
-zeroyt7.sendMessage(m.chat, {document:buf,fileName:api[0].output,mimetype:'video/mp4'},{quoted:m})}
+case 'ytmp4': case 'mp4': case 'ytv': {
+  if (!q) throw 'mana linknya?'
+  m.reply('wait')
+  api = await y2mateV(q)[0]
+  m.reply(`downloading 
+*size:* ${api.size}
+*quality:* ${api.quality}`)
+  buf = await getBuffer(api.link)
+  zeroyt7.sendMessage(m.chat, { document: buf, mimetype: 'video/mp4', fileName: api.output}, {quoted:m})
+}
 break
-
-
 case 'menu': case 'help': case 'm': case '?': {
 txt =`⭓Group Menu
 ${simbol} ${prefix}revoke
