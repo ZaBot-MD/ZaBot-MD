@@ -213,6 +213,7 @@ await zeroyt7.sendMessage(m.chat, { caption: `⭓Download Menu
 _${res.uploadedAt}_`,location: {jpegThumbnail: hh},templateButtons: menuBut,footer: pushname},)
 break
 case 'ytmp3': case 'mp3': case 'yta': {
+if (!q) throw 'mana linknya?'
   m.reply('wait')
     .then(res => {
       zeroyt7.sendMessage(m.chat, { delete: res.key })
@@ -225,7 +226,7 @@ case 'ytmp3': case 'mp3': case 'yta': {
 *size:* ${i.mp3size}
 *bitrate:* ${i.bitrate}`)
       buf = await getBuffer(i.dloadUrl)
-      zeroyt7(m.chat, { document: buf, mimetype: 'audio/mpeg', fileName: `${api.vidTitle}.mp3`}, {quoted:m})
+      zeroyt7.sendMessage(m.chat, { document: buf, mimetype: 'audio/mpeg', fileName: `${api.vidTitle}.mp3`}, {quoted:m})
     }
   }
 }
