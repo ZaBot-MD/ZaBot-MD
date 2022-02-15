@@ -212,7 +212,7 @@ await zeroyt7.sendMessage(m.chat, { caption: `⭓Download Menu
 *_${res.name}_*
 _${res.uploadedAt}_`,location: {jpegThumbnail: hh},templateButtons: menuBut,footer: pushname},)
 break
-case 'ytmp3': 'mp3': 'yta': {
+case 'ytmp3': case 'mp3': case 'yta': {
   m.reply('wait')
     .then(res => {
       zeroyt7.sendMessage(jid, { delete: res.key })
