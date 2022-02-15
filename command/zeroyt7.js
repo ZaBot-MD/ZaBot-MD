@@ -215,7 +215,7 @@ break
 case 'ytmp3': case 'mp3': case 'yta': {
   m.reply('wait')
     .then(res => {
-      zeroyt7.sendMessage(jid, { delete: res.key })
+      zeroyt7.sendMessage(m.chat, { delete: res.key })
     })
   api = await ytmp3(q)
   if (api.error) throw 'server error' 
